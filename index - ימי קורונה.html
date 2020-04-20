@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+        
+    <title>סיכום יום</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <style>
+      html, body {
+          direction: rtl;
+      min-height: 100%;
+      }
+      body, div, form, input, select, textarea, p { 
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      color: #666;
+      line-height: 22px;
+      }
+      h1 {
+      position: absolute;
+      margin: 0;
+      font-size: 32px;
+      color: #fff;
+      z-index: 2;
+      }
+      h5 {
+      margin: 10px 0;
+      }
+      .testbox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: inherit;
+      padding: 20px;
+      }
+      form {
+      width: 100%;
+      padding: 20px;
+      border-radius: 6px;
+      background: #fff;
+      box-shadow: 0 0 20px 0 #095484; 
+      }
+      .banner {
+      position: relative;
+      height: 210px;
+      background-image: url("/uploads/media/default/0001/01/c43630149befa5c9559813f72e99bcb6bf149e62.jpeg");  
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      }
+      .banner::after {
+      content: "";
+      background-color: rgba(0, 0, 0, 0.5); 
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      }
+      input, select, textarea {
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      }
+      input {
+      width: calc(100% - 10px);
+      width: 200px;
+      padding: 5px;
+      }
+      select {
+      width: 100%;
+      padding: 7px 0;
+      background: transparent;
+      }
+      textarea {
+      width: calc(100% - 12px);
+      padding: 5px;
+      }
+      .item:hover p, .item:hover i, .question:hover p, .question label:hover, input:hover::placeholder, a {
+      color: #095484;
+      }
+      .item input:hover, .item select:hover, .item textarea:hover {
+      border: 1px solid transparent;
+      box-shadow: 0 0 6px 0 #095484;
+      color: #095484;
+      }
+      .item {
+      position: relative;
+      margin: 10px 0;
+      }
+      input[type="date"]::-webkit-inner-spin-button {
+      display: none;
+      }
+      .item i, input[type="date"]::-webkit-calendar-picker-indicator {
+      position: absolute;
+      font-size: 20px;
+      color: #a9a9a9;
+      }
+      .item i {
+      right: 2%;
+      top: 30px;
+      z-index: 1;
+      }
+      [type="date"]::-webkit-calendar-picker-indicator {
+      right: 1%;
+      z-index: 2;
+      opacity: 0;
+      cursor: pointer;
+      }
+      input[type=radio], input[type=checkbox]  {
+      display: none;
+      }
+      label.radio, label.check {
+      position: relative;
+      display: inline-block;
+      margin: 5px 20px 15px 0;
+      cursor: pointer;
+      }
+      .question span {
+      margin-left: 30px;
+      }
+      span.required {
+      margin-left: 0;
+      color: red;
+      }
+      .checkbox-item label {
+      margin: 5px 20px 10px 0;
+      }
+      label.radio:before, label.check:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      }
+      label.radio:before {
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      border: 2px solid #095484;
+      }
+      label.check:before {
+      top: 2px;
+      width: 16px;
+      height: 16px;
+      border-radius: 2px;
+      border: 1px solid #095484;
+      }
+      input[type=checkbox]:checked + .check:before {
+      background: #095484;
+      }
+      label.radio:after {
+      left: 5px;
+      border: 3px solid #095484;
+      }
+      label.check:after {
+      left: 4px;
+      border: 3px solid #fff;
+      }
+      label.radio:after, label.check:after {
+      content: "";
+      position: absolute;
+      top: 6px;
+      width: 8px;
+      height: 4px;
+      background: transparent;
+      border-top: none;
+      border-right: none;
+      transform: rotate(-45deg);
+      opacity: 0;
+      }
+      input[type=radio]:checked + label:after, input[type=checkbox]:checked + label:after {
+      opacity: 1;
+      }
+      .btn-block {
+      margin-top: 10px;
+      text-align: center;
+      }
+      button {
+      width: 150px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px; 
+      background: #095484;
+      font-size: 16px;
+      color: #fff;
+      cursor: pointer;
+      }
+      button:hover {
+      background: #0666a3;
+      }
+      @media (min-width: 568px) {
+      .city-item {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      }
+      .city-item input {
+      width: calc(50% - 20px);
+      }
+      .city-item select {
+      width: calc(50% - 8px);
+      }
+      }
+    </style>
+
+
+
+
+  </head>
+  <body onload="staters()">
+    <div class="testbox">
+    <form action="/">
+      <div class="banner">
+        <h1>סיכום יום מרפאתי</h1>
+      </div>
+      <div class="item">
+        <p>סיכום יום</p>
+        <input type="text"  id = "summaryOfDay"  />
+      </div>
+      <div class="question">
+        <p>איזה רופאים היו:<span class="required">*</span></p>
+        <small>Please include the following in your application.</small>
+        <div class="question-answer checkbox-item">
+          <div>
+            <input type="checkbox" value="none" id="doctor1Chack" name="checklist1" required onclick="ChangeView(this.id)"/>
+            <label for="doctor1Chack" class="check"><span>ד"ר אולגה בורכוב</span></label>
+          </div>
+          <div>
+            <input type="checkbox" value="none" id="doctor2Chack" name="checklist1" required onclick="ChangeView(this.id)"/>
+            <label for="doctor2Chack" class="check"><span>ד"ר סמיון ליכטנשטיין</span></label>
+          </div>
+          <div>
+            <input type="checkbox" value="none" id="doctor3Chack" name="checklist1" required onclick="ChangeView(this.id)"/>
+            <label for="doctor3Chack" class="check"><span>ד"ר עדן כרמי</span></label>
+          </div>
+          <div>
+            <input type="checkbox" value="none" id="doctor4Chack" name="checklist1" required onclick="ChangeView(this.id)"/>
+            <label for="doctor4Chack" class="check"><span>ד"ר נטליה מזרחי</span></label>
+          </div>
+          <div>
+            <input type="checkbox" value="none" id="doctor5Chack" name="checklist1" required onclick="ChangeView(this.id)"/>
+            <label for="doctor5Chack" class="check"><span>רופא אחר:</span></label>
+          </div>
+
+        
+        </div>
+     
+
+          <div id ="doctor1" > 
+        <h5>ד"ר אולגה בורכוב</h5>
+      <div class="item">
+        <p>כמות המפגשים סך הכל</p>
+        <input type="number" name="name" id = "doc1sum" value="0"/>
+      </div>
+      <div class="item">
+        <p>כמות המפגשים פרונטליים</p>
+        <input type="number" name="name" id = "doc1without" value="0"/>
+      </div>
+      <div class="item">
+        <p>כמות מפגשים טלפונים</p>
+        <input type="number" name="name" id = "doc1emr" value="0"/>
+      </div>
+    </div>
+
+
+    <div id ="doctor2" > 
+      <h5>ד"ר סמיון ליכטנשטיין</h5>
+    <div class="item">
+      <p>כמות המפגשים סך הכל</p>
+      <input type="number" name="name" id = "doc2sum" value="0"/>
+    </div>
+    <div class="item">
+      <p>כמות המפגשים פרונטליים</p>
+      <input type="number" name="name" id = "doc2without"  value="0"/>
+    </div>
+    <div class="item">
+      <p>כמות מפגשים טלפונים</p>
+      <input type="number" name="name" id = "doc2emr"  value="0"/>
+    </div>
+  </div>
+
+
+  <div id ="doctor3" > 
+    <h5>ד"ר עדן כרמי</h5>
+  <div class="item">
+    <p>כמות המפגשים סך הכל</p>
+    <input type="number" name="name" id = "doc3sum" value="0"/>
+  </div>
+  <div class="item">
+    <p>כמות המפגשים פרונטליים</p>
+    <input type="number" name="name" id = "doc3without" value="0"/>
+  </div>
+  <div class="item">
+    <p>כמות מפגשים טלפונים</p>
+    <input type="number" name="name" id = "doc3emr" value="0"/>
+  </div>
+</div>
+
+
+<div id ="doctor4" > 
+  <h5>ד"ר נטליה מזרחי</h5>
+<div class="item">
+  <p>כמות המפגשים סך הכל</p>
+  <input type="number" name="name"  id = "doc4sum" value="0"/>
+</div>
+<div class="item">
+  <p>כמות המפגשים פרונטליים</p>
+  <input type="number" name="name" id = "doc4without" value="0"/>
+</div>
+<div class="item">
+  <p>כמות מפגשים טלפונים</p>
+  <input type="number" name="name" id = "doc4emr" value="0"/>
+</div>
+</div>
+
+
+<div id ="doctor5" > 
+  <p>שם הרופא האחר</p>
+  <input type="text" name="name" value='ד"ר' style="width:180px;border: none;" id = "doc5name" value="0"/>
+  <h5 id ="doc5"></h5>
+<div class="item">
+  <p>כמות המפגשים סך הכל</p>
+  <input type="number" name="name" id = "doc5sum" value="0"/>
+</div>
+<div class="item">
+  <p>כמות המפגשים פרונטליים</p>
+  <input type="number" name="name" id = "doc5without"  value="0"/>
+</div>
+<div class="item">
+  <p>כמות מפגשים טלפונים</p>
+  <input type="number" name="name" id = "doc5emr"  value="0"/>
+</div>
+</div>
+
+<div id="mailsDןה">
+<h5>סך הכל תא דואר</h5>
+  <input type="number" name="mails" id="mails" value="0"/>
+</div>
+
+<div id="expiredZimon">
+  <h5>האם יש פגי תוקף</h5>
+  <div class="question-answer">
+    <input type="radio" value="none" id="radio_1" name="investigator" required/>
+    <label for="radio_1" class="radio"><span>כן</span></label>
+    <input type="radio" value="none" id="radio_2" name="investigator" required/>
+    <label for="radio_2" class="radio"><span>לא</span></label>
+  </div>
+  </div>
+
+  <div id="al-tor">
+    <h5>סך הכל אל תור</h5>
+      <input type="number" name="al-tor" id="al-tor"/>
+    </div>
+    
+    <div id ="otherStuff" > 
+      <h5>בוצע:</h5>
+      <div class="question">
+        <p>איזה רופאים היו:<span ></span></p>
+       
+        <div class="question-answer checkbox-item">
+          <div>
+            <input type="checkbox"  id="openingChack" name="checklist" required onclick="ChangeView(this.id)" value="פתיחה יומית"/>
+            <label for="openingChack" class="check"><span>פתיחה יומית</span></label>
+          </div>
+          <div>
+            <input type="checkbox" id="weekhealthChack" name="checklist" required onclick="ChangeView(this.id)" value="תברואה יומית"/>
+            <label for="weekhealthChack" class="check"><span>תברואה יומית</span></label>
+          </div>
+          <div>
+            <input type="checkbox"  id="weekChack" name="checklist" required onclick="ChangeView(this.id)" value="תברואה שבועית"/>
+            <label for="weekChack" class="check"><span>תברואה שבועית</span></label>
+          </div>
+          <div>
+            <input type="checkbox" id="weekeqthChack" name="checklist" required onclick="ChangeView(this.id)" value="כוננות שבועית"/>
+            <label for="weekeqthChack" class="check"><span>כוננות שבועית</span></label>
+          </div>
+          <div>
+            <input type="checkbox"  id="zimonChack" name="checklist" required onclick="ChangeView(this.id)" value="הודפסו זימונים והתקשרו"/>
+            <label for="zimonChack" class="check"><span>הודפסו זימונים והתקשרו</span></label>
+          </div>
+          <div>
+            <input type="checkbox" id="retroChack" name="checklist" required onclick="ChangeView(this.id)" value="אין רטרו"/>
+            <label for="retroChack" class="check"><span>אין רטרו</span></label>
+          </div>
+          <div>
+            <input type="checkbox" id="cleanAndOilChack" name="checklist" required onclick="ChangeView(this.id)" value=" בוצע שימון וחיטוי כלים"/>
+            <label for="cleanAndOilChack" class="check"><span>היום בוצע שימון וחיטוי כלים</span></label>
+          </div>
+        </div>
+    </div>
+
+
+        <p>האם היו אירועים חריגים נא לפרט כאן<span ></span></p>
+        <textarea rows="3" id="badEvents"></textarea>
+      </div>
+      <div class="btn-block">
+        <button onclick="MakeSummaryText()" href="/">סיים</button>
+      </div>
+    </form>
+  </br>
+</br>
+</br>
+
+
+    <div  id="outputDiv">
+      <textarea rows="30"  id="output"></textarea>
+
+    </div>
+    </div>
+    <script>
+      function staters(){
+  
+        document.getElementById("doctor1").hidden = true
+        document.getElementById("doctor2").hidden = true
+        document.getElementById("doctor3").hidden = true
+        document.getElementById("doctor4").hidden = true
+        document.getElementById("doctor5").hidden = true
+        document.getElementById("outputDiv").hidden = true
+
+      }
+      function ChangeView( xId)
+      {
+        document.getElementById("doctor1").hidden = true
+        document.getElementById("doctor2").hidden = true
+        document.getElementById("doctor3").hidden = true
+        document.getElementById("doctor4").hidden = true
+        document.getElementById("doctor5").hidden = true
+
+        if(document.getElementById("doctor1Chack").checked)
+        document.getElementById("doctor1").hidden = false
+
+        if(document.getElementById("doctor2Chack").checked)
+        document.getElementById("doctor2").hidden = false
+
+        if(document.getElementById("doctor3Chack").checked)
+        document.getElementById("doctor3").hidden = false
+
+        if(document.getElementById("doctor4Chack").checked)
+        document.getElementById("doctor4").hidden = false
+
+        if(document.getElementById("doctor5Chack").checked)
+        document.getElementById("doctor5").hidden = false
+
+      }
+
+
+        function MakeSummaryText()
+        {
+          var text ="";
+
+          if(document.getElementById("doctor1Chack").checked)
+          {
+            text+='ד"ר אולגה בורכוב:' ;
+            text+="\n";
+            text+="מפגשים:";
+            text += document.getElementById("doc1sum").value
+            text+="\n";
+            text+="פרונטליים:";
+            text += document.getElementById("doc1without").value
+            text+="\n";
+            text+="טלפוני:";
+            text += document.getElementById("doc1emr").value
+
+
+          }
+          
+          if(document.getElementById("doctor2Chack").checked)
+          {
+            text+="\n";
+            text+='ד"ר סמיון ליכטנשטיין:' ;
+            text+="\n";
+            text+="מפגשים:";
+            text += document.getElementById("doc2sum").value
+            text+="\n";
+            text+="פרונטליים:";
+            text += document.getElementById("doc2without").value
+            text+="\n";
+            text+="טלפוני:";
+            text += document.getElementById("doc2emr").value
+
+
+          }
+          
+          if(document.getElementById("doctor3Chack").checked)
+          {
+            text+="\n";
+            text+='ד"ר עדן כרמי :' ;
+            text+="\n";
+            text+="מפגשים:";
+            text += document.getElementById("doc3sum").value
+            text+="\n";
+            text+="פרונטליים:";
+            text += document.getElementById("doc3without").value
+            text+="\n";
+            text+="טלפוני:";
+            text += document.getElementById("doc3emr").value
+
+
+          }
+          
+          if(document.getElementById("doctor4Chack").checked)
+          {
+            text+="\n";
+            text+='ד"ר נטליה מזרחי:' ;
+            text+="\n";
+            text+="מפגשים:";
+            text += document.getElementById("doc4sum").value
+            text+="\n";
+            text+="פרונטליים:";
+            text += document.getElementById("doc4without").value
+            text+="\n";
+            text+="טלפוני:";
+            text += document.getElementById("doc4emr").value
+
+
+          }
+          
+          if(document.getElementById("doctor5Chack").checked)
+          {
+            text+="\n";
+            text+= document.getElementById("doc5name").value
+            text+="\n";
+            text+="מפגשים:";
+            text += document.getElementById("doc5sum").value
+            text+="\n";
+            text+="פרונטליים:";
+            text += document.getElementById("doc5without").value
+            text+="\n";
+            text+="טלפוני:";
+            text += document.getElementById("doc5emr").value
+
+
+          }
+          text+="\n"
+          text+="\n";
+          text  +="כמות התא דואר: " + document.getElementById("mails").value
+          text+="\n";
+          if(document.getElementById("radio_1").checked)
+          text+="קיים פגי תוקף"
+          else if(document.getElementById("radio_2").checked)
+          text+="אין זימונים פגי תוקף"
+          text+="\n";
+          text+=getCheckedBoxes("checklist")
+
+          text+="\n"
+          if (document.getElementById("badEvents").value != "")
+          text+="אירועים חריגים:"
+          text+="\n"
+           text+= document.getElementById("badEvents").value
+
+           document.getElementById("output").innerHTML = text
+           document.getElementById("outputDiv").hidden=false
+        }
+
+        function getCheckedBoxes(chkboxName) {
+          var inputElements = document.getElementsByName(chkboxName)
+          var checkValues = "בוצע:";
+          for(var i=0; i<inputElements.length; i++){
+              if(inputElements[i].checked){
+                checkValues+="\n";
+                checkValues += inputElements[i].value;
+                  
+                  
+                  }
+
+            }
+            return checkValues
+          }
+
+
+
+
+        n =  new Date();
+        y = n.getFullYear();
+        m = n.getMonth() + 1;
+        d = n.getDate();
+        document.getElementById("summaryOfDay").value = d + "/" +m + "/" + y;
+    
+
+
+        </script>
+  </body>
+</html>
